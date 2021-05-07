@@ -10,4 +10,6 @@ To have a quick laugh go look at some corny jokes!
 
 Lastly, if you want to play some trivia don't hesitate. We have plenty of categories to choose from.
 Hope you enjoy!
+
+https://www.youtube.com/watch?v=nZ6AqU2M9fE
 ``
