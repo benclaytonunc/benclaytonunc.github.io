@@ -57,7 +57,7 @@ function initMap() {
         map: map,
         clickable: true,
         icon: {
-            url: 'images/sattelite-icon.png',
+            url: 'sattelite-icon.png',
             scaledSize: new google.maps.Size(40, 40)
         }
     });
