@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <script src="jquery/dist/jqueryy.js"></script>
+    <script src="vector_battle_regular.typeface.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  </body>
+  <body>
+    <p>
+      <div class= button> <a href="index2.html"> Where is the International Space Station? <br/> </a></div>
+      <div class= button> <a href="index.html"> Meteor Shower Game </a></div>
+   <!--  <h1> <br/> </h1>-->  
+     
+      <div class= button> <a href="index4.html"> Trivia Game </a></div>
+    </p>
+
+
+    <div id="myData"> 
+    </div>
+    <!-- My Third API call from https://official-joke-api.appspot.com/ -->
+        
+        <script>
+      //  
+        fetch('jokes.json')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData(data) {
+            var mainContainer = document.getElementById("myData");
+            
+            for (var i = 0; i < data.length; i++) {
+                var div = document.createElement("div");
+                div.innerHTML = '<h3> Joke: ' + data[i].setup + '<br/>' + data[i].punchline + '</h3> ';
+                h = Math.random();
+                if(h <= .03) {
+               //   mainContainer.innerText.fontsize(50);
+                  mainContainer.appendChild(div);
+                }
+               
+            }
+        }
+      
+
+</script>
+   
+  </main>
+</body>
+
+</html>

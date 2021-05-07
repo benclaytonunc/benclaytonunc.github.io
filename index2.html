@@ -1,0 +1,89 @@
+<!-- International Space Station App -->
+<html>
+  <head>
+    <script src="jquery/dist/jqueryy.js"></script>
+    <script src="vector_battle_regular.typeface.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+      #canvas { border:1px solid black; top:0px; left:0px; }
+      .button { position:absolute; border:1px solid black; }
+      #left-controls { position:absolute; left:1px; bottom:0px; display:none; }
+      #right-controls { position:absolute; right:1px; bottom:0px; display:none; }
+      #up { width:200px; height:100px; bottom:100px;}
+      #left { width:100px; height:100px; bottom:0px;}
+      #right { width:100px; height:100px; bottom:0px; left:100px; }
+      #space { width:200px; height:200px; bottom:0px; right:0px; }
+    </style>
+  </head>
+
+  <body id: body>
+    <div class= button> <a href="index.html"> Meteor Shower Game  </a></div> <h2> <br/> </h2>
+
+    <div class= button> <a href="index3.html"> Random Jokes </a></div>
+    <h2> <br/> </h2>
+    <div class= button> <a href="index4.html"> Trivia Game </a></div>
+  </body>
+  <body>
+    
+   <!-- First Api call ISS location-->
+    <script>
+      function moveISS () {
+    $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function(data) {
+        var lat = data['iss_position']['latitude'];
+        var lon = data['iss_position']['longitude'];
+        iss.setLatLng([lat, lon]);
+        isscirc.setLatLng([lat, lon]);
+        map.panTo([lat, lon], animate=true);
+    });
+    setTimeout(moveISS, 5000); 
+}
+    </script>
+    <script>
+      $.getJSON('http://api.open-notify.org/astros.json?callback=?', function(data) {
+    var number = data['number'];
+    $('#spacepeeps').html(number);
+
+    data['people'].forEach(function (d) {
+         $('#astronames').append('<li>' + d['name'] + '</li>');
+    });
+});
+    </script>
+  </body>
+<!-- ISS tracker-->
+<body>
+  <main>
+      <h1>Where is the International Space Station? </h1>
+      <h2> How is it moving so fast? Wow! </h2>
+      <div id="iss-data">
+          <p>Longitude: <span id='longitude'></span>°</p>
+          <p>Latitude: <span id='latitude'></span>°</p>
+          <p>Altitude: <span id='altitude'></span> km</p>
+          <p>Velocity: <span id='velocity'></span> km/h</p>
+      </div>
+
+      <div id='map'></div>
+     
+     <!-- Second API google maps-->
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6QutWB97SOJf-F4Hx0Rw5RcYfcPsm7ns&callback=initMap"
+      type="text/javascript"></script>
+      <script src="script.js"></script>
+
+      <h2>Current Astronauts Aboard the ISS</h2>
+      <div id='astronaut-list'>
+          <ul>
+              <li>Christina Koch</li>
+              <li>Alexander Skvortsov</li>
+              <li>Luca Parmitano</li>
+              <li>Andrew Morgan</li>
+              <li>Oleg Skripochka</li>
+              <li>Jessica Meir</li>
+          </ul>
+
+      </div>
+
+      
+  </main>
+</body>
+
+</html>
